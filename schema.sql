@@ -86,7 +86,6 @@ CREATE TABLE weather_daily (
 	"DailyHeatingDegreeDays" FLOAT, 
 	"DailyMaximumDryBulbTemperature" FLOAT, 
 	"DailyMinimumDryBulbTemperature" FLOAT, 
-	"DailyPeakWindDirection" FLOAT, 
 	"DailyPeakWindSpeed" FLOAT, 
 	"DailyPrecipitation" FLOAT, 
 	"DailySnowDepth" FLOAT, 
