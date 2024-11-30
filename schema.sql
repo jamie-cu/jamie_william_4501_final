@@ -93,3 +93,13 @@ CREATE TABLE weather_daily (
 	"DailySustainedWindSpeed" FLOAT
 );
 
+CREATE TABLE sunrise_daily (
+	"Date" TEXT, 
+	"Sunrise" BIGINT
+);
+
+CREATE TABLE sunset_daily (
+	"Date" TEXT, 
+	"Sunset" BIGINT
+);
+
