@@ -2,11 +2,11 @@ CREATE TABLE yellow_taxi_trips (
 	vendorid BIGINT, 
 	pickup_datetime DATETIME, 
 	dropoff_datetime DATETIME, 
-	passenger_count INTEGER, 
+	passenger_count BIGINT, 
 	trip_distance FLOAT, 
-	"RateCodeID" INTEGER, 
+	"RateCodeID" BIGINT, 
 	store_and_fwd_flag BIGINT, 
-	payment_type INTEGER, 
+	payment_type BIGINT, 
 	fare_amount FLOAT, 
 	"Miscellaneous_Extras" FLOAT, 
 	mta_tax FLOAT, 
@@ -49,8 +49,8 @@ CREATE TABLE uber_trips (
 );
 
 CREATE TABLE weather_hourly (
-	"Date" TEXT, 
-	"Hour" INTEGER, 
+	"Date" DATETIME, 
+	"Hour" BIGINT, 
 	"REPORT_TYPE" TEXT, 
 	"SOURCE" BIGINT, 
 	"HourlyAltimeterSetting" FLOAT, 
@@ -69,7 +69,7 @@ CREATE TABLE weather_hourly (
 );
 
 CREATE TABLE weather_daily (
-	"Date" TEXT, 
+	"Date" DATETIME, 
 	"REPORT_TYPE" TEXT, 
 	"SOURCE" BIGINT, 
 	"Sunrise" FLOAT, 
@@ -94,12 +94,12 @@ CREATE TABLE weather_daily (
 );
 
 CREATE TABLE sunrise_daily (
-	"Date" TEXT, 
+	"Date" DATETIME, 
 	"Sunrise" BIGINT
 );
 
 CREATE TABLE sunset_daily (
-	"Date" TEXT, 
+	"Date" DATETIME, 
 	"Sunset" BIGINT
 );
 
