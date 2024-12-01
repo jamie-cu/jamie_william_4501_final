@@ -32,8 +32,7 @@ UNION ALL
 ),
 weather AS(
     SELECT
-        strftime('%Y-%m-%d %H', CAST(Date AS TEXT) || ' ' || printf('%02d', Hour)||':00:00' ) AS hour,
-
+        strftime('%Y-%m-%d',Date)||' '|| printf('%02d', Hour) AS hour,
         HourlyPrecipitation
     FROM
         weather_hourly

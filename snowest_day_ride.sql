@@ -1,7 +1,7 @@
 
 WITH snowiest_days AS (
     SELECT 
-        date, 
+        strftime('%Y-%m-%d',date) AS date,
         DailySnowfall
     FROM 
         weather_daily

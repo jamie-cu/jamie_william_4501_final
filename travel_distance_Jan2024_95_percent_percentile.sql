@@ -32,7 +32,7 @@ percentile AS
     FROM
         ordered_total
     WHERE
-        row_num >= FLOOR(total_cnt*0.95) AND row_num <= CEIL(total_cnt*0.95)
+        row_num >= CAST(total_cnt * 0.95 AS INTEGER)
 )
     SELECT
         trip_distance
