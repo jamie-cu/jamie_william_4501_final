@@ -1,0 +1,46 @@
+
+WITH total AS(
+SELECT
+    CAST(strftime('%H',pickup_datetime) AS INTEGER) AS pick_time,
+    strftime('%Y-%m-%d',pickup_datetime) AS pick_date,
+    tips
+FROM uber_trips
+WHERE strftime('%Y',pickup_datetime)='2023'
+UNION ALL
+SELECT
+    CAST(strftime('%H',pickup_datetime) AS INTEGER) AS pick_time,
+    strftime('%Y-%m-%d',pickup_datetime) AS pick_date,
+    tip_amount AS tips
+FROM yellow_taxi_trips
+WHERE strftime('%Y',pickup_datetime)='2023'
+),
+sunrise AS(
+SELECT
+    strftime('%Y-%m-%d',Date) AS date,
+    Sunrise AS sunrise_time
+FROM sunrise_daily
+WHERE strftime('%Y',Date)='2023'
+),
+sunset AS(
+SELECT
+    strftime('%Y-%m-%d',Date) AS date,
+    Sunset AS sunset_time
+FROM sunset_daily
+WHERE strftime('%Y',Date)='2023'
+),
+raw AS(
+SELECT
+    CASE
+        WHEN pick_time>=sunrise_time/100 AND pick_time<=sunset_time/100 THEN 'day'
+        ELSE 'night'
+    END AS period,
+    tips
+FROM total
+LEFT JOIN sunrise ON total.pick_date = sunrise.date
+LEFT JOIN sunset ON total.pick_date = sunset.date
+)
+SELECT
+    AVG(tips),
+    period
+FROM raw
+GROUP BY period
